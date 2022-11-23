@@ -1,6 +1,9 @@
 #ifndef _alloc_log
 #define _alloc_log
 
+#include <iostream>
+#include <cstdlib>
+
 void* operator new(std::size_t sz)
 {
     static std::size_t alloc_cnt = 0;

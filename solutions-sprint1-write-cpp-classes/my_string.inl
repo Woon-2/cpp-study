@@ -518,12 +518,10 @@ my_string<CharT>&
 my_string<CharT>::
 erase(std::size_t index, std::size_t count)
 {
-    if (count == npos) this->clear();
-    else if (count)
-        this->_mutate(_check_i_is_in_size(index, *this,
-                                          "index > size()"),
-                      std::min(count, this->size() - index),
-                      nullptr, std::size_t{ 0 });
+    this->_mutate(_check_i_is_in_size(index, *this,
+                                      "index > size()"),
+                  std::min(count, this->size() - index),
+                  nullptr, std::size_t{ 0 });
     
     return *this;
 }
