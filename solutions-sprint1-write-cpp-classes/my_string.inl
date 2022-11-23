@@ -1088,15 +1088,17 @@ operator>>(std::basic_istream<CharT, Traits>& is,
     using ctype_base = typename ctype::ctype_base;
 
     std::size_t extracted = 0;
-    
+
     typename ios_base::iostate err = ios_base::goodbit;
     typename istream_type::sentry cerb(is, false);
-    
+
+   
+
     if (cerb)
 	{
 	    try
 	    {
-	        // Avoid reallocation for common case.
+	        // Avoid reallocation for common case
 	        str.clear();
 	        CharT buf[128];
 	        std::size_t len = 0;	      
@@ -1136,6 +1138,8 @@ operator>>(std::basic_istream<CharT, Traits>& is,
 	    }
 	}
     
+
+
     if (!extracted)
         err |= ios_base::failbit;
     if (err)
