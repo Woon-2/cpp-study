@@ -32,7 +32,7 @@ public:
     
     my_string(const my_string& other);
     
-    my_string(my_string&& other);
+    my_string(my_string&& other) noexcept;
     
     my_string(std::nullptr_t) = delete;
     
