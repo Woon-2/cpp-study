@@ -3,6 +3,8 @@
 
 #include "my_exception.h"
 #include <algorithm>
+#include <cctype>
+#include <iostream>
 
 #define _check_i_is_in_size(i, strobj, emsg) \
     debug_check_out_of_range((i), std::size_t{ 0 }, \
@@ -42,7 +44,7 @@ public:
     
     // *************************************** destructor
     
-    // copy assignment operators ************************
+    // assignment operators *****************************
     
     my_string&
     operator=(const my_string& other);
@@ -56,7 +58,7 @@ public:
     my_string&
     operator=(CharT ch);
     
-    // ************************ copy assignment operators
+    // ***************************** assignment operators
     
     // assign *******************************************
     

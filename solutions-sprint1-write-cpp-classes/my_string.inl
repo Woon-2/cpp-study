@@ -5,7 +5,7 @@ constexpr
 my_string<CharT>::
 my_string() noexcept
     : sz{ std::size_t{ 0 } }, cap{ std::size_t{ 0 } },
-      dat{ _construct<CharT>(_safe_cap(), CharT{}) }
+      dat{ nullptr }
 {
     
 }
@@ -60,7 +60,7 @@ my_string(const my_string& other)
 }
 
 template <class CharT>
-my_string<CharT>::my_string(my_string&& other)
+my_string<CharT>::my_string(my_string&& other) noexcept
     : my_string()
 {
     this->swap(other);
@@ -726,8 +726,11 @@ void
 my_string<CharT>::
 _set_sz(std::size_t n) noexcept
 {
-    this->sz = n;
-    (*this)[n] = CharT{};
+    if (data())
+    {
+        this->sz = n;
+        (*this)[n] = CharT{};
+    }
 }
 
 /**
