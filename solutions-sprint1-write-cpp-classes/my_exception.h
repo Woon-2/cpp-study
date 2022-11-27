@@ -16,6 +16,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <type_traits>
+#include <stdexcept>
 
     #define _fw(val) std::forward<std::remove_reference_t<decltype(val)>>(val)
 

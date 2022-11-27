@@ -3,12 +3,7 @@
 
 #include <iostream>
 #include <cstdlib>
-
-void _memlog(void* ptr, const char* modifying_memory_expr)
-{
-    std::cout << modifying_memory_expr << " in [" << ptr << "]\n";
-    std::cout.width(4);
-}
+#include <string>
 
 std::size_t _get_and_inc_alloc_cnt()
 {
@@ -22,39 +17,78 @@ std::size_t _get_and_inc_dealloc_cnt()
     return ++dealloc_cnt;
 }
 
-void __memlog_print_memsize(std::size_t sz)
+template <class CharT, class Traits>
+void _memlog(std::basic_ostream<CharT, Traits>& os,
+             void* const ptr,
+             const char* modifying_memory_expr)
 {
-    std::cout.width(4);
-    std::cout << ": ";
-    std::cout << sz;
-    std::cout.width(0);
-    std::cout << " bytes\n";
+    os << modifying_memory_expr << " in [" << ptr << "]\n";
+    os.width(4);
 }
 
-void _alloc_memlog(void* ptr)
+template <class CharT, class Traits>
+void __memlog_print_memsize(std::basic_ostream<CharT, Traits>& os,
+                            std::size_t sz)
 {
-    std::cout.width(4);
-    std::cout << '(' << _get_and_inc_alloc_cnt() << ") - ";
-    _memlog(ptr, "Allocation");
+    os.width(4);
+    os << ": ";
+    os << sz;
+    os.width(0);
+    os << " bytes\n";
 }
 
-void _alloc_memlog(void* ptr, std::size_t sz)
+template <class CharT, class Traits>
+void _alloc_memlog(std::basic_ostream<CharT, Traits>& os,
+                   void* const ptr)
 {
-    _alloc_memlog(ptr);
-    __memlog_print_memsize(sz);
+    os.width(4);
+    os << '(' << _get_and_inc_alloc_cnt() << ") - ";
+    _memlog(os, ptr, "Allocation");
 }
 
-void _dealloc_memlog(void* ptr)
+template <class CharT, class Traits>
+void _alloc_memlog(std::basic_ostream<CharT, Traits>& os,
+                   void* const ptr, std::size_t sz)
 {
-    std::cout.width(4);
-    std::cout << '(' << _get_and_inc_dealloc_cnt() << ") - ";
-    _memlog(ptr, "Deallocation");
+    _alloc_memlog(os, ptr);
+    __memlog_print_memsize(os, sz);
 }
 
-void _dealloc_memlog(void* ptr, std::size_t sz)
+template <class CharT, class Traits>
+void _dealloc_memlog(std::basic_ostream<CharT, Traits>& os,
+                     void* const ptr)
 {
-    _dealloc_memlog(ptr);
-    __memlog_print_memsize(sz);
+    os.width(4);
+    os << '(' << _get_and_inc_dealloc_cnt() << ") - ";
+    _memlog(os, ptr, "Deallocation");
+}
+
+template <class CharT, class Traits>
+void _dealloc_memlog(std::basic_ostream<CharT, Traits>& os,
+                     void* const ptr, std::size_t sz)
+{
+    _dealloc_memlog(os, ptr);
+    __memlog_print_memsize(os, sz);
+}
+
+void _alloc_memlog(void* const ptr)
+{
+    _alloc_memlog(std::cout, ptr);
+}
+
+void _alloc_memlog(void* const ptr, std::size_t sz)
+{
+    _alloc_memlog(std::cout, ptr, sz);
+}
+
+void _dealloc_memlog(void* const ptr)
+{
+    _dealloc_memlog(std::cout, ptr);
+}
+
+void _dealloc_memlog(void* const ptr, std::size_t sz)
+{
+    _dealloc_memlog(std::cout, ptr, sz);
 }
 
 void* operator new(std::size_t sz)
@@ -87,4 +121,4 @@ void operator delete[](void* ptr) noexcept
     ::operator delete(ptr);
 }
 
-#endif
+#endif  // _alloc_log
