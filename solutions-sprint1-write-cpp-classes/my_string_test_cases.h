@@ -313,4 +313,12 @@ void TEST10() // https://www.techiedelight.com/ko/convert-std-string-char-cpp/
     std::cout << c;
 }
 
+void TEST11()
+{
+    my_string <char> nameA;
+    my_string <char> nameB("Ann");
+
+    nameA = "Jenny";
+}
+
 #endif
