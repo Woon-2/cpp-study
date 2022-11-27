@@ -787,6 +787,7 @@ my_string<CharT>::
 _mutate(std::size_t pos, std::size_t len, CharT ch,
         std::size_t count)
 {
+
     const std::size_t how_much = this->size() - pos - len;
     const std::size_t new_sz = this->size() + count - len;
     

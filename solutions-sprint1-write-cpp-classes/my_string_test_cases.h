@@ -204,7 +204,7 @@ void TEST9() // https://www.tenouk.com/cpluscodesnippet/cplusbasic_stringclassco
 
     const char* str1 = "The basic_string";
 
-    my_string <char> str2(str1, 5);
+    string str2(str1, 5);
 
     cout << "str1 string is: " << str1 << endl << endl;
 

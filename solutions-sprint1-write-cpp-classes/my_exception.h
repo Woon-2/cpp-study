@@ -14,6 +14,7 @@
 
 #include "my_format.h"
 #include <algorithm>
+#include <stdexcept>
 #include <type_traits>
 
     #define _fw(val) std::forward<std::remove_reference_t<decltype(val)>>(val)
@@ -32,7 +33,8 @@ __check_out_of_range(const T& val, const T& lo, const T& hi,
                      const char* func, const char* expr)
 {
     if (std::clamp(val, lo, hi) != val)
-        throw std::out_of_range{_FMT("in %s:%d:%s:\n%s\n", file, line, func, expr)};
+        throw std::out_of_range(_FMT("in %s:%d:%s:\n%s\n", file, line, func, expr) );
+    
     return val;
 }
     
