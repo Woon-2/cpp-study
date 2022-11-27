@@ -32,7 +32,7 @@ public:
     
     my_string(const my_string& other);
     
-    my_string(my_string&& other);
+    my_string(my_string&& other) noexcept;
     
     my_string(std::nullptr_t) = delete;
     
@@ -44,7 +44,7 @@ public:
     
     // *************************************** destructor
     
-    // copy assignment operators ************************
+    // assignment operators *****************************
     
     my_string&
     operator=(const my_string& other);
@@ -58,7 +58,7 @@ public:
     my_string&
     operator=(CharT ch);
     
-    // ************************ copy assignment operators
+    // ***************************** assignment operators
     
     // assign *******************************************
     

@@ -20,14 +20,20 @@
 
     #ifdef _DEBUG
         #define debug_check_out_of_range(val, lo, hi, expr) \
-        ([_val = _fw(val), _lo = _fw(lo), _hi = _fw(hi), _expr = _fw(expr), _file = __FILE__, _line = __LINE__, _func = __FUNCTION_NAME__]() \
-        { \
-            if (std::clamp((_val), (_lo), (_hi)) != (_val)) \
-                throw std::out_of_range{_FMT("in %s:%d:%s:\n%s\n", _file, _line, _func, _expr)}; \
-            return _val; \
-        }())
+            __check_out_of_range(val, lo, hi, __FILE__, __LINE__, __FUNCTION_NAME__, expr)
     #else
         #define debug_check_out_of_range(val, ...) (val)
     #endif
+    
+template <class T>
+const T&
+__check_out_of_range(const T& val, const T& lo, const T& hi,
+                     const char* file, decltype(__LINE__) line,
+                     const char* func, const char* expr)
+{
+    if (std::clamp(val, lo, hi) != val)
+        throw std::out_of_range{_FMT("in %s:%d:%s:\n%s\n", file, line, func, expr)};
+    return val;
+}
     
 #endif
