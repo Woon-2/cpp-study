@@ -8,7 +8,7 @@
  * @param   hi      higher limit of the range
  * @param   expr    expression which will be forwarded to std::out_of_range
  * 
- * if val is not in [lo, hi] then throws std::out_of_range with expr
+ * if val is not in [lo, hi] then throws std::out_of_range with expr 
 */
 #ifndef debug_check_out_of_range
 

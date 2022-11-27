@@ -198,4 +198,111 @@ void TEST8()    // https://blockdmask.tistory.com/338
     cout << endl;
 }
 
+void TEST9() // https://www.tenouk.com/cpluscodesnippet/cplusbasic_stringclassconstructor.html
+{
+    // initializing with a C-string
+
+    const char* str1 = "The basic_string";
+
+    my_string <char> str2(str1, 5);
+
+    cout << "str1 string is: " << str1 << endl << endl;
+
+    cout << "Operation: str2(str1, 5)" << endl;
+
+    cout << "str2 initialized by str1 is: " << str2 << endl << endl;
+
+
+
+    // initializing with a string
+
+    /*string str3("Initialize with a StRinG?");
+
+    cout << "str3 string is: " << str3 << endl << endl;
+
+    my_string <char> str4(str3, 6, 10);
+
+    cout << "Operation: str4(str3, 6, 10)" << endl;
+
+    cout << "str4 initialized by part of the str3 string is: " << str4 << endl << endl;*/
+
+
+
+    // initializing a string with a number of characters of a specific value
+
+    my_string <char> str5(6, '7');
+
+    cout << "Operation: str5(6, '7')" << endl;
+
+    cout << "str5 initialized by six number of 7s is: " << str5 << endl << endl;
+
+
+
+    // creating an empty string and string with a specified allocator
+
+    /*
+    my_string <char> str6;
+
+    string str7;
+
+
+
+    // allocate a storage
+
+    my_string <char> str8(str7.get_allocator());
+
+
+
+    // test the emptiness
+
+    cout << "Operation: str8.empty()" << endl;
+
+    if (str8.empty())
+
+        cout << "The string str8 is empty." << endl << endl;
+
+    else
+
+        cout << "The string str8 is not empty." << endl << endl;
+
+
+
+    // fill up some string
+
+    str8 = "Not empty!";
+
+    cout << "Operation: str8 = Not empty!" << endl;
+
+
+
+    // retest again
+
+    if (str8.empty())
+
+        cout << "The string str8 is empty." << endl;
+
+    else
+
+        cout << "The string str8 is not empty." << endl;
+
+    cout << endl;
+    */
+
+
+
+    // initializing a string from another range of characters
+
+    //string str10("Test StRiNg");
+
+    //cout << "str10 string is: " << str10 << endl;
+
+    //cout << "Operation: str11(str10.begin()+5, str10.end())" << endl << endl;
+
+
+
+    //my_string <char> str11(str10.begin() + 5, str10.end());
+
+    //cout << "str11 initialized by another range of characters is: " << str11 << endl;
+}
+
 #endif
