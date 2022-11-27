@@ -305,4 +305,12 @@ void TEST9() // https://www.tenouk.com/cpluscodesnippet/cplusbasic_stringclassco
     //cout << "str11 initialized by another range of characters is: " << str11 << endl;
 }
 
+void TEST10() // https://www.techiedelight.com/ko/convert-std-string-char-cpp/
+{
+    my_string <char> str = "std::string to char*";
+
+    char* c = const_cast<char*>(str.c_str());
+    std::cout << c;
+}
+
 #endif
