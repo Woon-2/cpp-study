@@ -198,4 +198,66 @@ void TEST8()    // https://blockdmask.tistory.com/338
     cout << endl;
 }
 
+//-------------------- SangHoon Test -------------------------------
+
+void TEST9( )       // https://coding-factory.tistory.com/703
+{
+    setup( );
+
+    mstring str = "Hello World"; //문자열 선언
+
+    cout << str.at( 4 ) << endl; //at(index): 문자열 index 위치의 문자를 반환
+    cout << str[ 4 ] << endl; //문자열[index]: 배열처럼 index의 위치의 문자를 반환
+    cout << str.front( ) << endl; //문자열 맨 앞의 문자를 반환
+    cout << str.back( ) << endl; //문자열 맨 끝의 문자를 반환
+}
+
+void TEST10( )       // https://coding-factory.tistory.com/703
+{
+    setup( );
+
+    mstring str = "Hello World"; //문자열 선언
+
+    cout << str.length( ) << endl; //문자열의 길이를 반환
+    cout << str.size( ) << endl; //문자열이 사용하고 있는 Size를 반환
+    cout << str.capacity( ) << endl; //문자열에 할당된 메모리 크기 반환
+}
+
+void TEST11( )      // https://rebro.kr/53
+{
+    setup( );
+
+    mstring str1 = "abcdef";
+    mstring str2 = "bbbbbb";
+    mstring str3 = "aaaa";
+    mstring str4 = "abcdef";
+    cout << ( str1 < str2 ) << ' ' << ( str1 < str3 ) << ' ' << ( str1 == str4 ) << endl;
+    //1 : true , 0 : false
+
+    str1 += "A";
+    cout << str1 << '\n';
+    str1 = str1 + str2;
+    cout << str1 << '\n';
+}
+
+void TEST12( )      // https://rebro.kr/53
+{
+    setup( );
+
+    mstring str = "apple";
+    mstring str2 = "banana";
+    str.append( str2 );            cout << str << '\n';
+    str.append( str2, 1, 3 );      cout << str << '\n';
+    str.append( 3, 'k' );          cout << str << '\n';
+    str.clear( );                 cout << str << '\n';
+    str.assign( "apple" );         cout << str << '\n';
+    str.insert( 2, str2 );         cout << str << '\n';
+    str.replace( 3, 3, "ttt" );    cout << str << '\n';
+    str.erase( 0, 2 );             cout << str << '\n';
+    str.erase( );                 cout << str << '\n';
+    str.push_back( 'a' );          cout << str << '\n';
+    str.push_back( 'b' );          cout << str << '\n';
+    str.pop_back( );              cout << str << '\n';
+}
+
 #endif

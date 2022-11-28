@@ -12,4 +12,8 @@ int main()
     //TEST6();
     //TEST7();
     //TEST8();
+    //TEST9( );
+    //TEST10( );
+    //TEST11( );
+    TEST12( ); // 문제있음
 }
