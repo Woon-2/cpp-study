@@ -321,7 +321,7 @@ void TEST11()
     nameA = "Jenny";
 }
 
-void TEST12()
+void TEST12()   // https://maxcomfem.tistory.com/19
 {
     mstring my_string("my string");
     std::cout << my_string << std::endl;
@@ -347,12 +347,12 @@ void TEST12()
     for (auto e : "Today is a good day.")
         vec.push_back(e);
 
-    mstring eight_string(vec.begin(), vec.end());
+    //mstring eight_string(vec.begin(), vec.end());
 
-    std::cout << eight_string << std::endl;
+    //std::cout << eight_string << std::endl;
 
-    mstring nineth_string(vec.begin(), std::find(vec.begin(), vec.end(), 'y'));
-    std::cout << nineth_string << std::endl;
+    //mstring nineth_string(vec.begin(), std::find(vec.begin(), vec.end(), 'y'));
+    //std::cout << nineth_string << std::endl;
 }
 
 #endif
