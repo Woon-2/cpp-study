@@ -321,4 +321,38 @@ void TEST11()
     nameA = "Jenny";
 }
 
+void TEST12()
+{
+    mstring my_string("my string");
+    std::cout << my_string << std::endl;
+
+    mstring second_string(my_string);
+    std::cout << second_string << std::endl;
+
+    mstring third_string(my_string, 3);
+    std::cout << third_string << std::endl;
+
+    mstring fourth_string(my_string, 3, 2);
+    std::cout << fourth_string << std::endl;
+
+    const char* fifth_string = "my stirng";
+    mstring sixth_string(fifth_string);
+    std::cout << fifth_string << std::endl;
+    std::cout << sixth_string << std::endl;
+
+    mstring seventh_string(10, 'A');
+    std::cout << seventh_string << std::endl;
+
+    std::vector<char> vec;
+    for (auto e : "Today is a good day.")
+        vec.push_back(e);
+
+    mstring eight_string(vec.begin(), vec.end());
+
+    std::cout << eight_string << std::endl;
+
+    mstring nineth_string(vec.begin(), std::find(vec.begin(), vec.end(), 'y'));
+    std::cout << nineth_string << std::endl;
+}
+
 #endif
