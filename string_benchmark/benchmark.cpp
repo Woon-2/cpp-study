@@ -3,27 +3,7 @@
 
 #include "constants.h"
 
-#include <vector>
-#include <string>
-#include <fstream>
-#include <iostream>
-
-using string = std::basic_string<char, std::char_traits<char>,
-    TrackAllocator<char>>;
-    
-template <typename T>
-using vector = std::vector<T, TrackAllocator<T>>;
-
-using CellType = string;           // 1. std::string
-// using CellType = vector<char>;  // 2. std::vector<char>
-
-using CellDB = vector<std::array<CellType, ColCnt>>;
-
-CellDB loadDB(const std::string& file_path)#include "track_allocator.h"
-#include "timefunc.h"
-
-#include "constants.h"
-
+#include <array>
 #include <vector>
 #include <string>
 #include <fstream>
