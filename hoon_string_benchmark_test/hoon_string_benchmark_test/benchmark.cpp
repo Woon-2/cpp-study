@@ -22,27 +22,27 @@ using CellDB = vector<std::array<CellType, ColCnt>>;
 
 template<class _CharT, class _Traits, class Cont>
 std::basic_istream<_CharT, _Traits>&
-getline(std::basic_istream<_CharT, _Traits>& __in,
+getline(std::basic_istream<_CharT, _Traits>& in,
     Cont& __str, _CharT __delim)
 {
     typedef std::basic_istream<_CharT, _Traits>		__istream_type;
     typedef Cont	                                __string_type;
     typedef typename __istream_type::ios_base       __ios_base;
-    typedef typename __istream_type::int_type	    __int_type;
+    typedef typename __istream_type::int_type	    int_type;
     typedef typename __string_type::size_type	    __size_type;
 
     __size_type __extracted = 0;
     const __size_type __n = 1'000'000'000;
     typename __ios_base::iostate __err = __ios_base::goodbit;
-    typename __istream_type::sentry __cerb(__in, true);
+    typename __istream_type::sentry __cerb(in, true);
     if (__cerb)
     {
 	    try
 	    {
 	      __str.clear();
-	      const __int_type __idelim = _Traits::to_int_type(__delim);
-	      const __int_type __eof = _Traits::eof();
-	      __int_type __c = __in.rdbuf()->sgetc();
+	      const int_type __idelim = _Traits::to_int_type(__delim);
+	      const int_type __eof = _Traits::eof();
+	      int_type __c = in.rdbuf()->sgetc();
 
 	      while (__extracted < __n
 		     && !_Traits::eq_int_type(__c, __eof)
@@ -50,7 +50,7 @@ getline(std::basic_istream<_CharT, _Traits>& __in,
 		{
 		  __str.push_back(_Traits::to_char_type(__c));
 		  ++__extracted;
-		  __c = __in.rdbuf()->snextc();
+		  __c = in.rdbuf()->snextc();
 		}
 
 	      if (_Traits::eq_int_type(__c, __eof))
@@ -58,26 +58,26 @@ getline(std::basic_istream<_CharT, _Traits>& __in,
 	      else if (_Traits::eq_int_type(__c, __idelim))
 		{
 		  ++__extracted;		  
-		  __in.rdbuf()->sbumpc();
+		  in.rdbuf()->sbumpc();
 		}
 	      else
 		__err |= __ios_base::failbit;
 	    }
 	    catch(...)
 	    {
-	      __in.setstate(__ios_base::badbit);
+	      in.setstate(__ios_base::badbit);
 	    }
 	}
       if (!__extracted)
 	__err |= __ios_base::failbit;
       if (__err)
-	__in.setstate(__err);
-      return __in;
+	in.setstate(__err);
+      return in;
 }
 
-CellDB loadDB(const std::string& file_path)
+CellType loadDB(const std::string& file_path)
 {
-    std::ifstream in(file_path);
+    /*std::ifstream in(file_path);
     
     if (!in)
     {
@@ -96,6 +96,9 @@ CellDB loadDB(const std::string& file_path)
         }
     }
     
+    return ret;*/
+
+    CellType ret;
     return ret;
 }
 

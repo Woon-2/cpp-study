@@ -91,34 +91,4 @@ void _dealloc_memlog(void* const ptr, std::size_t sz)
     _dealloc_memlog(std::cout, ptr, sz);
 }
 
-void* operator new(std::size_t sz)
-{
-    if (sz == 0)
-        ++sz;
-        
-    if (void* ptr = std::malloc(sz))
-    {
-        _alloc_memlog(ptr, sz);
-        return ptr;
-    }
-    
-    throw std::bad_alloc{};
-}
-
-void operator delete(void* ptr) noexcept
-{
-    _dealloc_memlog(ptr);
-    std::free(ptr);
-}
-
-void* operator new[](std::size_t sz)
-{
-    return ::operator new(sz);
-}
-
-void operator delete[](void* ptr) noexcept
-{
-    ::operator delete(ptr);
-}
-
 #endif
